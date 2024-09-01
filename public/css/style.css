@@ -13,7 +13,8 @@
   color: #0b1f0b;
 }
 ::-webkit-scrollbar {
-  background: #0f0f0f;
+  background-color: #0f0f0f;
+  display: none;
 }
 body {
   background-color: #0f0f0f;
@@ -30,7 +31,6 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-
   border-radius: 10px;
 }
 .login {
@@ -107,6 +107,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  box-sizing: border-box;
 }
 .chat__form {
   padding: 15px 20px;
@@ -202,15 +203,21 @@ body {
   display: none;
   position: absolute;
   bottom: 90px; /* Ajuste conforme necessário */
-  width: 100%;
+  width: 60%;
   height: 250px;
   left: 0;
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 5px;
+  padding: 10px;
   z-index: 1000;
   border-radius: 4px;
   overflow-x: auto;
+
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: max-content;
+}
+.chat__emoji-picker::-webkit-scrollbar {
+  background: none;
 }
 
 .chat__emoji-picker .emoji {
@@ -246,5 +253,8 @@ body {
     width: 20vw;
     height: 5.8vh;
     border-radius: 0px 15px 15px 0px;
+  }
+  .chat__emoji-picker {
+    width: 100%;
   }
 }
