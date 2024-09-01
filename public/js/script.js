@@ -9,6 +9,279 @@ const chatForm = chat.querySelector(".chat__form");
 const chatInput = chat.querySelector(".chat__input");
 const chatMessages = chat.querySelector(".chat__messages");
 
+//emoji
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector(".chat__emoji-button");
+  const input = document.querySelector(".chat__input");
+  const picker = document.querySelector(".chat__emoji-picker");
+
+  if (!button || !input || !picker) {
+    console.error("Erro ao encontrar elementos para emojis.");
+    return;
+  }
+
+  const emojis = [
+    "😀",
+    "😃",
+    "😄",
+    "😁",
+    "😆",
+    "😅",
+    "😂",
+    "🤣",
+    "😊",
+    "😇",
+    "🙂",
+    "🙃",
+    "😉",
+    "😌",
+    "😍",
+    "🥰",
+    "😘",
+    "😗",
+    "😙",
+    "😚",
+    "😋",
+    "😛",
+    "😝",
+    "😜",
+    "🤪",
+    "🤨",
+    "🧐",
+    "🤓",
+    "😎",
+    "🤩",
+    "🥳",
+    "😏",
+    "😒",
+    "😞",
+    "😔",
+    "😟",
+    "😕",
+    "🙁",
+    "😣",
+    "😖",
+    "😫",
+    "😩",
+    "🥺",
+    "😢",
+    "😭",
+    "😮‍💨",
+    "😤",
+    "😠",
+    "😡",
+    "🤬",
+    "🤯",
+    "😳",
+    "🥵",
+    "🥶",
+    "😱",
+    "😨",
+    "😰",
+    "😥",
+    "😓",
+    "🤗",
+    "🙄",
+    "😯",
+    "😦",
+    "😧",
+    "😮",
+    "😲",
+    "🥱",
+    "😴",
+    "🤤",
+    "😪",
+    "😵",
+    "😵‍💫",
+    "🤐",
+    "🥴",
+    "🤢",
+    "🤮",
+    "🤧",
+    "😷",
+    "🤒",
+    "🤕",
+    "🤑",
+    "🤠",
+    "😈",
+    "👿",
+    "👹",
+    "👺",
+    "🤡",
+    "💩",
+    "👻",
+    "💀",
+    "☠️",
+    "👽",
+    "👾",
+    "🤖",
+    "🎃",
+    "😺",
+    "😸",
+    "😹",
+    "😻",
+    "😼",
+    "😽",
+    "🙀",
+    "😿",
+    "😾",
+    "🐱",
+    "🐶",
+    "🐭",
+    "🐹",
+    "🐰",
+    "🦊",
+    "🐻",
+    "🐼",
+    "🐻‍❄️",
+    "🐨",
+    "🐯",
+    "🦁",
+    "🐮",
+    "🐷",
+    "🐽",
+    "🐸",
+    "🐵",
+    "🙈",
+    "🙉",
+    "🙊",
+    "🐒",
+    "🐔",
+    "🐧",
+    "🐦",
+    "🐤",
+    "🐣",
+    "🐥",
+    "🦆",
+    "🦅",
+    "🦉",
+    "🦇",
+    "🐺",
+    "🐗",
+    "🐴",
+    "🦄",
+    "🐝",
+    "🐛",
+    "🦋",
+    "🐌",
+    "🐞",
+    "🐜",
+    "🦟",
+    "🦗",
+    "🕷",
+    "🕸",
+    "🦂",
+    "🐢",
+    "🐍",
+    "🦎",
+    "🦖",
+    "🦕",
+    "🐙",
+    "🦑",
+    "🦐",
+    "🦞",
+    "🦀",
+    "🐡",
+    "🐠",
+    "🐟",
+    "🐬",
+    "🐳",
+    "🐋",
+    "🦈",
+    "🐊",
+    "🐅",
+    "🐆",
+    "🦓",
+    "🦍",
+    "🦧",
+    "🐘",
+    "🦛",
+    "🦏",
+    "🐪",
+    "🐫",
+    "🦒",
+    "🦘",
+    "🐃",
+    "🐂",
+    "🐄",
+    "🐎",
+    "🐖",
+    "🐏",
+    "🐑",
+    "🦙",
+    "🐐",
+    "🦌",
+    "🐕",
+    "🐩",
+    "🦮",
+    "🐕‍🦺",
+    "🐈",
+    "🐓",
+    "🦃",
+    "🦚",
+    "🦜",
+    "🦢",
+    "🦩",
+    "🕊",
+    "🐇",
+    "🦝",
+    "🦨",
+    "🦡",
+    "🦦",
+    "🦥",
+    "🐁",
+    "🐀",
+    "🐿",
+    "🦔",
+    "🐾",
+    "🐉",
+    "🐲",
+    "🐦‍🔥",
+  ]; // Adicione os emojis que quiser
+
+  emojis.forEach((emoji) => {
+    const emojiButton = document.createElement("button");
+    emojiButton.classList.add("emoji");
+    emojiButton.textContent = emoji;
+    emojiButton.type = "button"; // Certifique-se de que o botão não seja do tipo submit
+    emojiButton.addEventListener("click", () => {
+      input.value += emoji;
+      // Remova ou comente a linha abaixo para manter o picker aberto
+      // picker.style.display = 'none';
+    });
+    picker.appendChild(emojiButton);
+  });
+
+  button.addEventListener("click", () => {
+    picker.style.display = picker.style.display === "none" ? "block" : "none";
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!button.contains(event.target) && !picker.contains(event.target)) {
+      picker.style.display = "none";
+    }
+  });
+
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    sendMessage();
+  });
+
+  function sendMessage() {
+    const message = {
+      userId: user.id,
+      userName: user.name,
+      userColor: user.color,
+      content: chatInput.value,
+    };
+
+    websocket.send(JSON.stringify(message));
+    chatInput.value = "";
+  }
+});
+
+//fim emoji
+
 const colors = [
   "cadetblue",
   "darkgoldenrod",
@@ -96,20 +369,4 @@ const handleLogin = (event) => {
   websocket.onmessage = processMessage;
 };
 
-const sendMessage = (event) => {
-  event.preventDefault();
-
-  const message = {
-    userId: user.id,
-    userName: user.name,
-    userColor: user.color,
-    content: chatInput.value,
-  };
-
-  websocket.send(JSON.stringify(message));
-
-  chatInput.value = "";
-};
-
 loginForm.addEventListener("submit", handleLogin);
-chatForm.addEventListener("submit", sendMessage);

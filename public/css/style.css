@@ -8,10 +8,18 @@
 ::root {
   font-size: 16px;
 }
+::selection {
+  background-color: palegreen;
+  color: #0b1f0b;
+}
+::-webkit-scrollbar {
+  background: #0f0f0f;
+}
 body {
   background-color: #0f0f0f;
   color: #f2f2f2;
 }
+
 .clear {
   clear: both;
 }
@@ -149,7 +157,17 @@ body {
   flex-direction: column;
   overflow-wrap: break-word; /* Adiciona overflow-wrap */
 }
-
+.emoji-picker {
+  display: none; /* Inicialmente escondido */
+  position: absolute;
+  bottom: 60px; /* Ajuste conforme necessário */
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px;
+  z-index: 1000;
+  border-radius: 4px;
+}
 .message--self {
   color: #121212;
   background-color: #f2f2f2;
@@ -157,8 +175,8 @@ body {
   align-self: flex-end;
 }
 .message--other {
-  color: #0f0f0f;
-  background-color: #d1d1d1;
+  color: #f2f2f2;
+  background-color: #212121;
   border-radius: 0px 10px 10px 10px;
   align-self: flex-start;
 }
@@ -169,6 +187,44 @@ body {
   font-weight: 700;
   font-size: 1rem;
 }
+.chat__emoji-button {
+  background: none;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.chat__emoji-button span {
+  font-size: 2rem;
+}
+.chat__emoji-picker {
+  display: none;
+  position: absolute;
+  bottom: 90px; /* Ajuste conforme necessário */
+  width: 100%;
+  height: 250px;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px;
+  z-index: 1000;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.chat__emoji-picker .emoji {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.chat__emoji-picker .emoji:hover {
+  background-color: #f0f0f0;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     width: 100%;

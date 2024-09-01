@@ -16,21 +16,26 @@
         <header class="title">
           <h1 class="brand">Tongue chat</h1>
         </header>
-        <section class="chat__messages">
-          <!--<div class="message--self">Hello, World!</div>
-          <div class="message--other">
-            <span class="message--sender">Gunnar</span>
-            Olá, mundo!
-          </div>-->
-        </section>
+        <section class="chat__messages"></section>
         <form class="chat__form">
-          <div class="clear"></div>
+          <!--Chat emojis-->
+          <button type="button" class="chat__emoji-button">
+            <span class="material-symbols-outlined">emoji_emotions</span>
+          </button>
+          <!-- Emoji Picker -->
+          <div class="chat__emoji-picker">
+            <!-- Emojis will be added here by JavaScript -->
+          </div>
+          <!--Fim emojis-->
+
           <input
             type="text"
             class="chat__input"
             placeholder="Digite uma mensagem"
             required
+            autofocus
           />
+
           <button type="submit" class="chat__button">
             <span class="material-symbols-outlined"> send </span>
           </button>
@@ -49,7 +54,6 @@
         </form>
       </section>
     </section>
-
     <script src="./js/script.js"></script>
   </body>
 </html>
